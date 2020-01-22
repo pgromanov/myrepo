@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "username": {
+      "type": "string",
+      "defaultValue": "azureuser"
+    },
+    "password": {
+      "type": "securestring"
+    }
+  },
+  "variables": {
+    "deploymentUrl": "[deployment().properties.templateLink.uri]",
+    "eastasiaVnetName": "eastasia-vnet",
+    "eastasiaVnetAddressPrefix": "10.1.0.0/16",
+    "eastasiaVnetResourceId": "[resourceId('Microsoft.Network/virtualNetworks', variables('eastasiaVnetName'))]",
+    "eastasiaNSGName": "eastasia-nsg",
+    "eastasiaNSGResourceId": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('eastasiaNSGName'))]",
+    "eastasiaVMName": "eastasia-vm",
+    "eastasiaVMNicName": "eastasia-vm-nic",
+    "eastasiaVMNicPIPName": "eastasia-vm-nic-pip",
+    "eastasiaSubnetName": "eastasia-subnet",
+    "eastasiaSubnetPrefix": "10.1.0.0/24",
+    "eastasiaVMDNSName": "[concat(variables('eastasiaVMName'), '-', uniqueString(resourceGroup().id))]",
+    "eastasiaVMNicResourceId": "[resourceId('Microsoft.Network/networkInterfaces', variables('eastasiaVMNicName'))]",
+    "eastasiaVMNicPIPResourceId": "[resourceId('Microsoft.Network/publicIPAddresses', variables('eastasiaVMNicPIPName'))]",
+    "eastasiaSubnetResourceId": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('eastasiaVnetName'), variables('eastasiaSubnetName'))]",
+    "westus2VnetName": "westus2-vnet",
+    "westus2VnetAddressPrefix": "10.2.0.0/16",
+    "westus2VnetResourceId": "[resourceId('Microsoft.Network/virtualNetworks', variables('westus2VnetName'))]",
+    "westus2NSGName": "westus2-nsg",
+    "westus2NSGResourceId": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('westus2NSGName'))]",
+    "westus2VMName": "westus2-vm",
+    "westus2VMNicName": "westus2-vm-nic",
+    "westus2VMNicPIPName": "westus2-vm-nic-pip",
+    "westus2SubnetName": "westus2-subnet",
+    "westus2SubnetPrefix": "10.2.0.0/24",
+    "westus2VMDNSName": "[concat(variables('westus2VMName'), '-', uniqueString(resourceGroup().id))]",
+    "westus2VMNicResourceId": "[resourceId('Microsoft.Network/networkInterfaces', variables('westus2VMNicName'))]",
+    "westus2VMNicPIPResourceId": "[resourceId('Microsoft.Network/publicIPAddresses', variables('westus2VMNicPIPName'))]",
+    "westus2SubnetResourceId": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('westus2VnetName'), variables('westus2SubnetName'))]"
+  },
+  "resources": [  ],
+  "outputs": {
+
+    "myoutput" : {
+    "type": "string",
+    "value" : "[uri(variables('deploymentUrl'), 'setup-nginx.sh')]"
+     }
+  }
+}
