@@ -62,5 +62,4 @@
       "value": "[resourceId('Microsoft.Network/publicIPAddresses', variables('westus2VMNicPIPName'))]"
     }
     }
-  }
 }
