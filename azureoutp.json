@@ -44,9 +44,22 @@
   "resources": [  ],
   "outputs": {
 
-    "myoutput" : {
-    "type": "string",
-    "value" : "[uri(variables('deploymentUrl'), 'setup-nginx.sh')]"
-     }
+    "myoutput": {
+      "type": "string",
+      "value": "[uri(variables('deploymentUrl'), 'setup-nginx.sh')]"
+    },
+    {
+      "type": "string",
+      "value": "[concat(variables('westus2VMName'), '-', uniqueString(resourceGroup().id))]"
+    },
+    {
+      "type": "string",
+      "value": "[resourceId('Microsoft.Network/networkInterfaces', variables('westus2VMNicName'))]"
+    },
+    {
+      "type": "string",
+      "value": "[resourceId('Microsoft.Network/publicIPAddresses', variables('westus2VMNicPIPName'))]"
+    }
+    }
   }
 }
