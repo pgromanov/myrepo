@@ -48,14 +48,15 @@
       "type": "string",
       "value": "[uri(variables('deploymentUrl'), 'setup-nginx.sh')]"
     },
-    {
+    "myoutput2": {
       "type": "string",
       "value": "[concat(variables('westus2VMName'), '-', uniqueString(resourceGroup().id))]"
     },
-    {
+    "myoutput3": {
       "type": "string",
       "value": "[resourceId('Microsoft.Network/networkInterfaces', variables('westus2VMNicName'))]"
     },
+    "myoutput4":
     {
       "type": "string",
       "value": "[resourceId('Microsoft.Network/publicIPAddresses', variables('westus2VMNicPIPName'))]"
