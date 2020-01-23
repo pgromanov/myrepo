@@ -114,7 +114,10 @@
                 "https://raw.githubusercontent.com/MicrosoftDocs/mslearn-distribute-load-with-traffic-manager/master/setup-nginx.sh"
               ]
             }
-          }
+          },
+          "dependsOn": [
+            "[variables('westus2VMName')]"
+          ]
         }
       ]
     }
