@@ -107,12 +107,6 @@
             "autoUpgradeMinorVersion": true,
             "settings": {
               "skipDos2Unix": true
-            },
-            "protectedSettings": {
-              "commandToExecute": "sh setup-nginx.sh westus2",
-              "fileUris": [
-                "https://raw.githubusercontent.com/MicrosoftDocs/mslearn-distribute-load-with-traffic-manager/master/setup-nginx.sh"
-              ]
             }
           },
           "dependsOn": [
